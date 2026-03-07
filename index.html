@@ -375,8 +375,8 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
 
 <section id="hero">
   <div class="slides">
-    <div class="slide on" style="background-image:url('https://images.unsplash.com/photo-1564769625905-50e93615e769?w=1600&q=80')"></div>
-    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=1600&q=80')"></div>
+    <div class="slide on" style="background-image:url('https://images.unsplash.com/photo-1591604466107-b1ef21b1f3a6?w=1600&q=80')"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1564769610726-59cead6a6f8f?w=1600&q=80')"></div>
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80')"></div>
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80')"></div>
   </div>
@@ -497,7 +497,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
     </div>
     <div class="reveal">
       <div class="pil-img">
-        <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=900&q=80" alt="Masjid al-Haram" loading="lazy"/>
+        <img src="https://images.unsplash.com/photo-1591604466107-b1ef21b1f3a6?w=900&q=80" alt="Masjid al-Haram" loading="lazy"/>
         <div class="pil-badge">&#x1F54B; Hajj 2025 &mdash; Enquire Now</div>
       </div>
     </div>
@@ -522,12 +522,12 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
     <button class="filt" data-cat="leisure">&#x1F30D; Leisure</button>
   </div>
   <div class="dest-grid">
-    <div class="dcard reveal" data-cat="hajj" onclick="openModal('Makkah','Saudi Arabia','Middle East','https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600&q=80','The holiest city in Islam. Perform Hajj or Umrah with expert guidance, staying in premium hotels steps from Masjid al-Haram — a journey that transforms the soul.','21 days','Contact Us','Hajj/Umrah')">
-      <div class="dcard-img"><img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600&q=80" alt="Makkah" loading="lazy"/><span class="dcard-badge badge-hajj">Hajj/Umrah</span></div>
+    <div class="dcard reveal" data-cat="hajj" onclick="openModal('Makkah','Saudi Arabia','Middle East','https://images.unsplash.com/photo-1591604466107-b1ef21b1f3a6?w=600&q=80','The holiest city in Islam. Perform Hajj or Umrah with expert guidance, staying in premium hotels steps from Masjid al-Haram — a journey that transforms the soul.','21 days','Contact Us','Hajj/Umrah')">
+      <div class="dcard-img"><img src="https://images.unsplash.com/photo-1591604466107-b1ef21b1f3a6?w=600&q=80" alt="Makkah" loading="lazy"/><span class="dcard-badge badge-hajj">Hajj/Umrah</span></div>
       <div class="dcard-body"><p class="dcard-country">Saudi Arabia &middot; Middle East</p><h3 class="dcard-name">Makkah</h3><p class="dcard-desc">The holiest city in Islam — perform Hajj or Umrah with expert guidance and premium hotels steps from Masjid al-Haram.</p><div class="dcard-foot"><div class="dcard-price">Contact Us</div><span class="dcard-cta">Explore &#8594;</span></div></div>
     </div>
-    <div class="dcard reveal" data-cat="hajj" onclick="openModal('Madinah','Saudi Arabia','Middle East','https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&q=80','The radiant city of the Prophet. Visit Masjid an-Nabawi and the sacred sites — a deeply moving experience for every believer.','7 days','Contact Us','Spiritual')">
-      <div class="dcard-img"><img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&q=80" alt="Madinah" loading="lazy"/><span class="dcard-badge badge-hajj">Spiritual</span></div>
+    <div class="dcard reveal" data-cat="hajj" onclick="openModal('Madinah','Saudi Arabia','Middle East','https://images.unsplash.com/photo-1564769610726-59cead6a6f8f?w=600&q=80','The radiant city of the Prophet. Visit Masjid an-Nabawi and the sacred sites — a deeply moving experience for every believer.','7 days','Contact Us','Spiritual')">
+      <div class="dcard-img"><img src="https://images.unsplash.com/photo-1564769610726-59cead6a6f8f?w=600&q=80" alt="Madinah" loading="lazy"/><span class="dcard-badge badge-hajj">Spiritual</span></div>
       <div class="dcard-body"><p class="dcard-country">Saudi Arabia &middot; Middle East</p><h3 class="dcard-name">Madinah</h3><p class="dcard-desc">The radiant city of the Prophet. Visit Masjid an-Nabawi and the sacred sites — a moving experience for every believer.</p><div class="dcard-foot"><div class="dcard-price">Contact Us</div><span class="dcard-cta">Explore &#8594;</span></div></div>
     </div>
     <div class="dcard reveal" data-cat="leisure" onclick="openModal('Dubai','UAE','Middle East','https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80','World-class shopping, breathtaking architecture, desert safaris and unmatched luxury — all in one incredible city.','5–7 days','From &#8358;850,000','Leisure')">
@@ -836,14 +836,15 @@ var slides = document.querySelectorAll('.slide');
 var dots   = document.querySelectorAll('.dot');
 var cur = 0;
 function showSlide(n){
+  if(!slides.length) return;
   slides[cur].classList.remove('on');
-  dots[cur].classList.remove('on');
+  if(dots[cur]) dots[cur].classList.remove('on');
   cur = (n + slides.length) % slides.length;
   slides[cur].classList.add('on');
-  dots[cur].classList.add('on');
+  if(dots[cur]) dots[cur].classList.add('on');
 }
 dots.forEach(function(d, i){ d.addEventListener('click', function(){ showSlide(i); }); });
-setInterval(function(){ showSlide(cur + 1); }, 5000);
+if(slides.length) setInterval(function(){ showSlide(cur + 1); }, 5000);
 
 /* ── Pilgrimage tabs ── */
 document.querySelectorAll('.ptab').forEach(function(btn){
