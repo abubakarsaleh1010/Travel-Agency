@@ -12,13 +12,16 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Outfit',sans-serif;background:#FAFAF7;color:#1C1C1A;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'Outfit',sans-serif;background:#FAFAF7;color:#1C1C1A;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;background:none}
 
 /* COLOURS */
 /* teal:#0B3D40  teal2:#155659  gold:#B8892A  gold2:#CF9E3A  sand:#F5EDE0  cream:#FAFAF7 */
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;right:0;width:4px;background:linear-gradient(180deg,#B8892A,#CF9E3A);height:0%;z-index:9999;transition:height .1s linear}
 
 /* ── NAV ── */
 #nav{
@@ -264,14 +267,22 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
 .wa-float:hover .wa-tip{opacity:1;transform:translateX(0)}
 .wa-btn{width:52px;height:52px;border-radius:50%;background:#25D366;border:none;cursor:pointer;font-size:1.35rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.32);animation:wap 2.5s infinite}
 .wa-btn:hover{transform:scale(1.08)}
+@keyframes ripple{to{transform:scale(2.5);opacity:0}}
 @keyframes wap{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,.3)}50%{box-shadow:0 4px 28px rgba(37,211,102,.55)}}
 #btt{position:fixed;bottom:5.8rem;right:1.9rem;z-index:500;width:38px;height:38px;border-radius:50%;background:#B8892A;color:#fff;border:none;cursor:pointer;font-size:.88rem;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(184,137,42,.28);transition:all .3s;opacity:0;pointer-events:none}
 #btt.show{opacity:1;pointer-events:auto}
 #btt:hover{background:#0B3D40;transform:translateY(-2px)}
 
+/* ── CARD LIFT ── */
+.dcard,.srv-card,.tcard{transform-style:preserve-3d}
+.dcard:active,.srv-card:active{transform:translateY(-2px) scale(.99)}
+
+/* ── SMOOTH ANCHOR OFFSET ── */
+[id]{scroll-margin-top:72px}
+
 /* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
+.reveal{opacity:0;transform:scale(.97);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:scale(1)}
 
 /* ── MODAL ── */
 .modal-bg{display:none;position:fixed;inset:0;z-index:800;background:rgba(11,61,64,.72);align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(5px)}
@@ -291,6 +302,9 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
 .meta-l{font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:.16rem}
 .meta-v{font-family:‘Cormorant Garamond’,serif;font-size:.9rem;font-weight:600;color:#0B3D40}
 .modal-acts{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ── ACTIVE NAV ── */
+.nav-links a.active{color:#B8892A !important}
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
@@ -332,6 +346,8 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
 <body>
 
 <!-- WHATSAPP FLOAT -->
+
+<div id="progress-bar"></div>
 
 <div class="wa-float">
   <span class="wa-tip">Chat with us!</span>
@@ -386,7 +402,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
     <h1 class="hero-h1">Your <em>Sacred Journey</em><br/>Starts Here</h1>
     <p class="hero-p">Naib Marid Travels and Tours Limited delivers seamless Hajj, Umrah and international travel &mdash; handled with professionalism, care, and deep commitment to every traveler.</p>
     <div class="hero-btns">
-      <button class="btn btn-gold" data-goto="pilgrimage">&#x1F54B; Hajj &amp; Umrah 2025</button>
+      <button class="btn btn-gold" data-goto="pilgrimage">&#x1F54B; Hajj &amp; Umrah 2026</button>
       <button class="btn btn-outline" data-goto="contact">Book a Trip</button>
     </div>
   </div>
@@ -402,7 +418,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner">
-    <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Hajj 2025 Now Open</span>
+    <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Hajj 2026 Now Open</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Umrah Year-Round</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Ramadan Packages</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Visa Advisory</span>
@@ -412,7 +428,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>RC: 7121587</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Wuse 2 &middot; Abuja</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>+234 808 487 8446</span>
-    <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Hajj 2025 Now Open</span>
+    <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Hajj 2026 Now Open</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Umrah Year-Round</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Ramadan Packages</span>
     <span class="ticker-item"><span class="ticker-sep">&#x2726;</span>Visa Advisory</span>
@@ -445,7 +461,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
     </div>
   </div>
   <div class="srv-grid">
-    <div class="srv-card reveal"><div class="srv-icon">&#x1F54B;</div><h3>Hajj Packages</h3><p>Complete Hajj 2025 packages with flights, premium hotels near Haram, qualified guides and full on-ground support throughout.</p><span class="srv-chip">Pilgrimage</span></div>
+    <div class="srv-card reveal"><div class="srv-icon">&#x1F54B;</div><h3>Hajj Packages</h3><p>Complete Hajj 2026 packages with flights, premium hotels near Haram, qualified guides and full on-ground support throughout.</p><span class="srv-chip">Pilgrimage</span></div>
     <div class="srv-card reveal"><div class="srv-icon">&#x1F319;</div><h3>Umrah Packages</h3><p>Year-round Umrah packages tailored to your schedule and budget &mdash; every experience spiritually enriching.</p><span class="srv-chip">Pilgrimage</span></div>
     <div class="srv-card reveal"><div class="srv-icon">&#x2728;</div><h3>Ramadan Packages</h3><p>Spend Ramadan in Makkah or Madinah. Tarawih access, Iftar and Suhoor fully arranged for your group.</p><span class="srv-chip">Spiritual</span></div>
     <div class="srv-card reveal"><div class="srv-icon">&#x2708;&#xFE0F;</div><h3>Ticketing</h3><p>Competitive airfare on all major airlines. Domestic and international routes with expert fare search.</p><span class="srv-chip">Travel</span></div>
@@ -466,7 +482,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
       <h2 class="sec-h2">Hajj, Umrah &amp;<br/>Ramadan Packages</h2>
       <p class="sec-sub">Planning a pilgrimage takes months of preparation. Let us carry that responsibility while you focus entirely on your devotion.</p>
       <div class="ptabs">
-        <button class="ptab on" data-pane="hajj">Hajj 2025</button>
+        <button class="ptab on" data-pane="hajj">Hajj 2026</button>
         <button class="ptab" data-pane="umrah">Umrah</button>
         <button class="ptab" data-pane="ramadan">Ramadan</button>
       </div>
@@ -476,7 +492,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
           <div class="feat"><span class="feat-ico">&#x1F3E8;</span><div><h4>Premium Hotels</h4><p>Accommodation steps from Masjid al-Haram and Masjid an-Nabawi.</p></div></div>
           <div class="feat"><span class="feat-ico">&#x1F9ED;</span><div><h4>Qualified Guides</h4><p>Islamic scholars escort every pilgrim from Ihram through Tawaf al-Wada.</p></div></div>
         </div>
-        <button class="btn btn-gold" data-goto="contact">Apply for Hajj 2025 &#8594;</button>
+        <button class="btn btn-gold" data-goto="contact">Apply for Hajj 2026 &#8594;</button>
       </div>
       <div class="pane" id="pane-umrah">
         <div class="feats">
@@ -498,7 +514,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
     <div class="reveal">
       <div class="pil-img">
         <img src="https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?w=900&q=80" alt="Masjid al-Haram" loading="lazy"/>
-        <div class="pil-badge">&#x1F54B; Hajj 2025 &mdash; Enquire Now</div>
+        <div class="pil-badge">&#x1F54B; Hajj 2026 &mdash; Enquire Now</div>
       </div>
     </div>
   </div>
@@ -570,8 +586,8 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
         <p class="tcard-bio">A seasoned banking professional with wide knowledge in financial administration. His exposure to local and international travel inspired him to found Naib Marid Travels.</p>
         <div class="tcard-tags"><span class="tcard-tag">Banking &amp; Finance</span><span class="tcard-tag">Leadership</span></div>
         <div class="tcard-links">
-          <a class="tcard-link" href="mailto:Sambo2nasir@gmail.com">&#x2709;&#xFE0F; Sambo2nasir@gmail.com</a>
-          <a class="tcard-link" href="mailto:nasir@naibmarid.com.ng">&#x2709;&#xFE0F; nasir@naibmarid.com.ng</a>
+          <button class="tcard-link" onclick="var a='Sambo2nasir';var b='gmail.com';window.location='mai'+'lto:'+a+'@'+b;">&#x2709;&#xFE0F; Sambo2nasir@gmail.com</button>
+          <button class="tcard-link" onclick="var a='nasir';var b='naibmarid.com.ng';window.location='mai'+'lto:'+a+'@'+b;">&#x2709;&#xFE0F; nasir@naibmarid.com.ng</button>
           <a class="tcard-link" href="tel:+2348033054019">&#x1F4DE; +234 803 305 4019</a>
         </div>
       </div>
@@ -586,7 +602,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
         <p class="tcard-bio">International graduate of Islamic Jurisprudence with deep experience as a traveler and student leader abroad. Also a proprietor of an Islamic school.</p>
         <div class="tcard-tags"><span class="tcard-tag">Islamic Jurisprudence</span><span class="tcard-tag">Int'l Affairs</span></div>
         <div class="tcard-links">
-          <a class="tcard-link" href="mailto:Ameenullahi@naibmarid.com.ng">&#x2709;&#xFE0F; Ameenullahi@naibmarid.com.ng</a>
+          <button class="tcard-link" onclick="var a='Ameenullahi';var b='naibmarid.com.ng';window.location='mai'+'lto:'+a+'@'+b;">&#x2709;&#xFE0F; Ameenullahi@naibmarid.com.ng</button>
         </div>
       </div>
     </div>
@@ -600,7 +616,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
         <p class="tcard-bio">Wide knowledge of Travel and Tours Operations with GDS expertise in Amadeus and Sabre. Experienced IT professional overseeing all operational infrastructure.</p>
         <div class="tcard-tags"><span class="tcard-tag">GDS: Amadeus &amp; Sabre</span><span class="tcard-tag">IT &amp; Operations</span></div>
         <div class="tcard-links">
-          <a class="tcard-link" href="mailto:operations@naibmarid.com.ng">&#x2709;&#xFE0F; operations@naibmarid.com.ng</a>
+          <button class="tcard-link" onclick="var a='operations';var b='naibmarid.com.ng';window.location='mai'+'lto:'+a+'@'+b;">&#x2709;&#xFE0F; operations@naibmarid.com.ng</button>
         </div>
       </div>
     </div>
@@ -664,7 +680,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
       <h3 class="ci-h">Contact Information</h3>
       <div class="ci-item"><div class="ci-ico">&#x1F4DE;</div><div><h4>Hotlines</h4><a href="tel:+2348084878446">+234 808 487 8446</a><a href="tel:+2348080154962">+234 808 015 4962</a><a href="tel:+2347081810058">+234 708 181 0058</a></div></div>
       <div class="ci-item"><div class="ci-ico">&#x1F4CD;</div><div><h4>Office</h4><p>Suite B9 &amp; B10 Royal Plaza, No 12 Fria Close<br/>Off Ademola Adetokumbo Crescent, Wuse 2, Abuja</p></div></div>
-      <div class="ci-item"><div class="ci-ico">&#x1F4E7;</div><div><h4>Email</h4><a href="mailto:nasir@naibmarid.com.ng">nasir@naibmarid.com.ng</a><a href="mailto:Ameenullahi@naibmarid.com.ng">Ameenullahi@naibmarid.com.ng</a></div></div>
+      <div class="ci-item"><div class="ci-ico">&#x1F4E7;</div><div><h4>Email</h4><button class="tcard-link" onclick="var a='nasir';var b='naibmarid.com.ng';window.location='mai'+'lto:'+a+'@'+b;">&#x2709;&#xFE0F; nasir@naibmarid.com.ng</button><button class="tcard-link" onclick="var a='Ameenullahi';var b='naibmarid.com.ng';window.location='mai'+'lto:'+a+'@'+b;">&#x2709;&#xFE0F; Ameenullahi@naibmarid.com.ng</button></div></div>
       <div class="ci-item"><div class="ci-ico">&#x1F4AC;</div><div><h4>WhatsApp</h4><a href="#" data-wa>+234 808 487 8446 &mdash; Tap to Chat</a></div></div>
     </div>
     <div class="reveal">
@@ -706,7 +722,7 @@ footer{background:#071415;color:rgba(255,255,255,.45);padding:3.5rem 5vw 1.8rem}
       <p class="foot-about">Nigeria's trusted specialist in Hajj, Umrah and international travel. Based in Abuja, serving pilgrims and travelers across West Africa.</p>
       <div class="socials">
         <button class="soc" data-wa title="WhatsApp">&#x1F4AC;</button>
-        <a class="soc" href="mailto:nasir@naibmarid.com.ng" title="Email">&#x2709;&#xFE0F;</a>
+        <a class="soc" href="javascript:void(0)" onclick="window.location='mai'+'lto:'+ 'nasir@naibmarid.com.ng'" title="Email">&#x2709;&#xFE0F;</a>
       </div>
     </div>
     <div class="foot-col"><h4>Services</h4><ul>
@@ -791,18 +807,17 @@ function waOpen(msg){
   window.open('https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(text), '_blank');
 }
 
-/* ── Set WhatsApp hrefs ── */
+/* WhatsApp buttons */
 document.querySelectorAll('[data-wa]').forEach(function(el){
   el.addEventListener('click', function(){ waOpen(); });
 });
 
-/* ── Smooth scroll nav ── */
+/* Smooth scroll */
 function goTo(id){
   var el = document.getElementById(id);
   if(!el) return;
   window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 68, behavior: 'smooth' });
 }
-
 document.querySelectorAll('[data-goto]').forEach(function(el){
   el.addEventListener('click', function(){
     var target = el.getAttribute('data-goto');
@@ -812,25 +827,27 @@ document.querySelectorAll('[data-goto]').forEach(function(el){
   });
 });
 
-/* ── Mobile menu ── */
+/* Mobile menu */
 var mobMenu = document.getElementById('mob-menu');
 function openMob(){ mobMenu.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeMob(){ mobMenu.classList.remove('open'); document.body.style.overflow = ''; }
+function closeMob(){ if(mobMenu){ mobMenu.classList.remove('open'); document.body.style.overflow = ''; } }
 var hamBtn = document.getElementById('ham');
 if(hamBtn) hamBtn.addEventListener('click', openMob);
 var mobClose = document.getElementById('mob-close');
 if(mobClose) mobClose.addEventListener('click', closeMob);
 if(mobMenu) mobMenu.addEventListener('click', function(e){ if(e.target === mobMenu) closeMob(); });
 
-/* ── Nav scroll style ── */
+/* Nav scroll + back to top */
 var navbar = document.getElementById('nav');
 window.addEventListener('scroll', function(){
-  navbar.classList.toggle('solid', window.pageYOffset > 50);
+  if(navbar) navbar.classList.toggle('solid', window.pageYOffset > 50);
   var btt = document.getElementById('btt');
   if(btt) btt.classList.toggle('show', window.pageYOffset > 300);
 }, { passive: true });
+var bttBtn = document.getElementById('btt');
+if(bttBtn) bttBtn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-/* ── Hero slideshow ── */
+/* Hero slideshow */
 var slides = document.querySelectorAll('.slide');
 var dots   = document.querySelectorAll('.dot');
 var cur = 0;
@@ -845,7 +862,7 @@ function showSlide(n){
 dots.forEach(function(d, i){ d.addEventListener('click', function(){ showSlide(i); }); });
 if(slides.length) setInterval(function(){ showSlide(cur + 1); }, 5000);
 
-/* ── Pilgrimage tabs ── */
+/* Pilgrimage tabs */
 document.querySelectorAll('.ptab').forEach(function(btn){
   btn.addEventListener('click', function(){
     var pane = btn.getAttribute('data-pane');
@@ -857,7 +874,7 @@ document.querySelectorAll('.ptab').forEach(function(btn){
   });
 });
 
-/* ── Destination filter ── */
+/* Destination filter */
 document.querySelectorAll('.filt').forEach(function(btn){
   btn.addEventListener('click', function(){
     var cat = btn.getAttribute('data-cat');
@@ -870,7 +887,7 @@ document.querySelectorAll('.filt').forEach(function(btn){
   });
 });
 
-/* ── Testimonial slider ── */
+/* Testimonial slider */
 var tTrack = document.getElementById('t-track');
 var tIdx = 0, tLen = 3;
 function goT(n){
@@ -882,7 +899,7 @@ document.querySelectorAll('.t-prev').forEach(function(b){ b.addEventListener('cl
 document.querySelectorAll('.t-next').forEach(function(b){ b.addEventListener('click', function(){ goT(tIdx + 1); }); });
 setInterval(function(){ goT(tIdx + 1); }, 7000);
 
-/* ── Contact form ── */
+/* Contact form */
 var form = document.getElementById('enquiry-form');
 if(form){
   form.addEventListener('submit', function(e){
@@ -913,7 +930,7 @@ if(form){
   });
 }
 
-/* ── Scroll reveal ── */
+/* Scroll reveal */
 if(window.IntersectionObserver){
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -944,9 +961,82 @@ if(statsSection && window.IntersectionObserver){
         }, 20);
       });
     }
-  }, {threshold:0.3});
+  }, { threshold: 0.3 });
   cObs.observe(statsSection);
+} else {
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '+');
+  });
 }
+
+/* ── Button ripple ── */
+document.querySelectorAll('.btn, .submit-btn, .nav-book').forEach(function(btn){
+  btn.style.position = 'relative';
+  btn.style.overflow = 'hidden';
+  btn.addEventListener('click', function(e){
+    var r = document.createElement('span');
+    var rect = btn.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height);
+    r.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,.3);width:'+size+'px;height:'+size+'px;left:'+(e.clientX-rect.left-size/2)+'px;top:'+(e.clientY-rect.top-size/2)+'px;transform:scale(0);animation:ripple .5s linear;pointer-events:none';
+    btn.appendChild(r);
+    setTimeout(function(){ r.remove(); }, 500);
+  });
+});
+
+/* ── Progress bar ── */
+var pbar = document.getElementById('progress-bar');
+function updateProgress(){
+  if(!pbar) return;
+  var scrollTop = window.pageYOffset;
+  var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  pbar.style.height = (docHeight > 0 ? (scrollTop/docHeight)*100 : 0) + '%';
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+
+/* ── Active nav ── */
+var navSecs = ['services','pilgrimage','destinations','team','contact'];
+function updateActiveNav(){
+  var y = window.pageYOffset + 80;
+  var cur = '';
+  navSecs.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el && el.offsetTop <= y) cur = id;
+  });
+  document.querySelectorAll('.nav-links a[data-goto]').forEach(function(a){
+    a.classList.toggle('active', a.getAttribute('data-goto') === cur);
+  });
+}
+window.addEventListener('scroll', updateActiveNav, {passive:true});
+updateActiveNav();
+
+/* ── Image fade-in on load ── */
+document.querySelectorAll('img').forEach(function(img){
+  if(img.complete){ img.classList.add('loaded'); }
+  else { img.addEventListener('load', function(){ img.classList.add('loaded'); }); }
+});
+
+/* ── Button ripple ── */
+document.querySelectorAll('.btn,.submit-btn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    var r = document.createElement('span');
+    var rect = btn.getBoundingClientRect();
+    var sz = Math.max(rect.width, rect.height);
+    r.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,.25);pointer-events:none;width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rect.left-sz/2)+'px;top:'+(e.clientY-rect.top-sz/2)+'px;transform:scale(0);animation:ripple .55s linear';
+    btn.appendChild(r);
+    setTimeout(function(){r.remove();},560);
+  });
+});
+
+/* ── Keyboard ESC closes mobile menu ── */
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    var mob = document.getElementById('mob-menu');
+    if(mob && mob.classList.contains('open')){
+      mob.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+});
 
 })();
 </script>
